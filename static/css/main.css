@@ -1,0 +1,30 @@
+.container {
+	 margin: 100px auto;
+	  padding: 20px;
+	   width: 400px;
+	       text-align: center;
+        }
+
+       #time {
+	        font-size: 4em;
+		    margin-top: auto;
+	    }
+
+	   #date {
+		  font-size: 1.5em;
+		   margin-top: auto;
+	    }		
+		#countdownName {
+		    font-size: 1.5em;
+		    margin-top: auto;
+	    }
+	   #countdown {
+		    font-size: 1em;
+		    margin-top: auto;
+	    }
+
+	     @media screen and (max-width: 768px) {
+		      .container {
+			        width: 90%;
+				 }
+			 }

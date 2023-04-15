@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Countdown & Web Clock</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<html>
+  <body>
+    
+    <div class="container">
+      <h1 id="time"></h1>  
+      <h2 id="date"></h2>
+    </div>
+    <div class="container">
+        <h3 id="countdownName">距离李巧的生日还有</h3>  
+        <h4 id="countdown"></h4>
+    </div>
+
+    <script>
+      var time = document.getElementById('time');
+      setInterval(function() {
+        time.innerHTML = new Date().toLocaleTimeString();
+      }, 1000); 
+        
+      var date = document.getElementById('date');
+      setInterval(function() {
+        var now = new Date();
+        var formattedDate = now.toLocaleDateString('zh-CN', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        date.innerHTML = formattedDate;
+      }, 1000);
+
+      var countDownDate = 1683129600000;
+
+      var x = setInterval(function() {
+
+        var now = new Date().getTime();
+
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒 ";
+
+      if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "生日快乐！";
+        }
+      }, 1000);
+    </script>
+  </body>
+<style>
+     body {
+       background-image: url("bg1.png");
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+    }
+</style>
+
+
+</html> 
